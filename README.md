@@ -2,6 +2,10 @@
 
 一个使用 Python 原生 socket 编写的简单 HTTP Web Server，是我学习 TCP socket 和 HTTP 请求 / 响应流程时完成的小项目。
 
+## 原始项目要求
+
+课程项目要求见 [原始任务说明](docs/Week5-Project1-TaskSheet-WebServer-1.docx)，文档按下载版本原样收录。
+
 ## 项目功能
 
 - 使用 IPv4 TCP socket，在端口 `12000` 监听连接。
