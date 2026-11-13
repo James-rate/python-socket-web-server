@@ -1,62 +1,62 @@
 # Python Socket Web Server
 
-一个使用 Python 原生 socket 编写的简单 HTTP Web Server，是我学习 TCP socket 和 HTTP 请求 / 响应流程时完成的小项目。
+A simple HTTP web server built with Python's socket library as a small learning project to explore TCP sockets and the HTTP request-response flow.
 
-## 原始项目要求
+## Original Assignment
 
-课程项目要求见 [原始任务说明](docs/Week5-Project1-TaskSheet-WebServer-1.docx)，文档按下载版本原样收录。
+See the [original task sheet](docs/Week5-Project1-TaskSheet-WebServer-1.docx) for the course project requirements. The downloaded document is included without changes.
 
-## 项目功能
+## Features
 
-- 使用 IPv4 TCP socket，在端口 `12000` 监听连接。
-- 从 HTTP 请求中读取文件路径，并返回对应的文本文件。
-- 文件读取成功时返回 `200 OK`。
-- 文件不存在或无法读取时返回 `404 Not Found`。
-- 提供 `simpleWeb.html` 作为演示页面。
+- Listens for connections on port `12000` using an IPv4 TCP socket.
+- Reads a file path from an HTTP request and returns the corresponding text file.
+- Returns `200 OK` when the file is read successfully.
+- Returns `404 Not Found` when the file does not exist or cannot be read.
+- Includes `simpleWeb.html` as a demo page.
 
-## 运行方法
+## How to Run
 
-需要 Python 3，仅使用标准库，无需安装第三方依赖。
+Requires Python 3. The project uses only the standard library, so no third-party packages are needed.
 
-先在终端进入本项目目录，再运行：
+Open a terminal in the project directory and run:
 
 ```bash
 python web_server.py
 ```
 
-在浏览器中访问：
+Then open this URL in a browser:
 
 ```text
 http://127.0.0.1:12000/simpleWeb.html
 ```
 
-访问一个不存在的文件，例如 `http://127.0.0.1:12000/missing.html`，可以看到 404 页面。按 `Ctrl+C` 停止服务器。
+To see the 404 page, request a file that does not exist, such as `http://127.0.0.1:12000/missing.html`. Press `Ctrl+C` to stop the server.
 
-请使用完整的 `/simpleWeb.html` 路径；当前版本没有为根路径 `/` 配置默认首页。
+Use the full `/simpleWeb.html` path. The current version does not provide a default page for the root path `/`.
 
-## 文件说明
+## Project Files
 
-| 文件 | 用途 |
+| File | Purpose |
 | --- | --- |
-| `web_server.py` | socket 服务器与简单 HTTP 响应处理 |
-| `simpleWeb.html` | 用于验证服务器的示例网页 |
+| `web_server.py` | Socket server and basic HTTP response handling |
+| `simpleWeb.html` | Sample web page for testing the server |
 
-## 学习内容
+## Learning Topics
 
-- socket 的创建、绑定、监听、连接接收和关闭。
-- TCP 连接中请求与响应的基本流程。
-- HTTP 状态行、响应头和响应正文的组成。
-- 文件读取及基本的异常处理。
+- Creating, binding, listening on, accepting connections with, and closing sockets.
+- The basic request-response flow over a TCP connection.
+- HTTP status lines, response headers, and response bodies.
+- File reading and basic exception handling.
 
-## 当前限制
+## Limitations
 
-这是保留原始实现的学习演示，仅适合在可信的本地环境中运行。代码会监听所有网络接口，且未限制请求文件路径；不要将它部署到公网或开放给不可信的客户端，也不要在存放敏感文件的目录中运行。
+This learning demo preserves the original implementation and should only be run in a trusted local environment. The server listens on all network interfaces and does not restrict requested file paths. Do not expose it to the public internet or untrusted clients, or run it in a directory containing sensitive files.
 
-当前版本按顺序处理连接，只读取一次、最多 1024 字节的请求，使用简单的请求解析逻辑，并把返回文件作为 HTML 文本处理。它尚未完善异常请求处理、分段收发、并发连接、二进制文件和 HTTPS 等功能。
+The current version handles connections sequentially, reads each request once with a maximum of 1024 bytes, uses basic request parsing, and serves files as HTML text. It does not yet provide robust handling of malformed requests, partial reads and writes, concurrent connections, binary files, or HTTPS.
 
-## 后续学习方向
+## Ideas for Further Learning
 
-- 限制文件访问范围，并默认绑定本机地址。
-- 为 `/` 添加默认首页。
-- 完善请求解析、错误处理和响应头。
-- 支持更多文件类型与并发连接。
+- Restrict file access and bind to the loopback address by default.
+- Add a default page for `/`.
+- Improve request parsing, error handling, and response headers.
+- Support more file types and concurrent connections.
